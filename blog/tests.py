@@ -6,6 +6,23 @@ class TestView(TestCase):
     def setUp(self):
         self.client = Client()
     
+    def navbar_test(self, soup):
+        navbar = soup.nav
+        self.assertIn('Blog', navbar.text)
+        self.assertIn('About Me', navbar.text)
+        
+        logo_btn = navbar.find('a', text='Do It Django')
+        self.assertEqual(logo_btn.attrs['href'], '/')
+        
+        home_btn = navbar.find('a', text='Home')
+        self.assertEqual(home_btn.attrs['href'], '/')
+        
+        blog_btn = navbar.find('a', text='Blog')
+        self.assertEqual(blog_btn.attrs['href'], '/blog/')
+        
+        about_me_btn = navbar.find('a', text='About Me')
+        self.assertEqual(about_me_btn.attrs['href'], '/about_me/')
+    
     def test_post_list(self):
         # 1.1 포스트 목록 페이지를 가져오기
         response = self.client.get('/blog/')
@@ -17,12 +34,8 @@ class TestView(TestCase):
         soup = BeautifulSoup(response.content, 'html.parser')
         self.assertEqual(soup.title.text, 'Blog')
         
-        # 1.4 내비게이션 바
-        navbar = soup.nav
-        
-        # 1.5 Blog, About Me 라는 문구가 내비게이션 바에 존재
-        self.assertIn('Blog', navbar.text)
-        self.assertIn('About Me', navbar.text)
+        # 1.4 Blog, About Me 라는 문구가 내비게이션 바에 존재
+        self.navbar_test(soup)
         
         # 2.1 포스트(게시물)가 하나도 없다면
         self.assertEqual(Post.objects.count(), 0)
@@ -72,14 +85,12 @@ class TestView(TestCase):
         soup = BeautifulSoup(response.content, 'html.parser')
         
         # 2.2 포스트 목록 페이지와 똑같은 내비게이션이 있음
-        navbar = soup.nav
-        self.assertIn('Blog', navbar.text)
-        self.assertIn('About Me', navbar.text)
+        self.navbar_test(soup)
         
         # 2.3 첫 번째 포스트의 제목(title)이 웹 브라우저 탭 타이틀에 들어있음
         self.assertIn(post_001.title, soup.title.text)
         
-        # 2.4 첫 번째 포스트의 ㅔㅈ목이 포스트 영역(post_area)에 있다
+        # 2.4 첫 번째 포스트의 제목이 포스트 영역(post_area)에 있다
         main_area = soup.find('div', id = 'main-area')
         post_area = main_area.find('div', id='post-area')
         self.assertIn(post_001.title, post_area.text)

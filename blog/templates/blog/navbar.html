@@ -1,0 +1,70 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container">
+        <a class="navbar-brand" href="/">Do It Django</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="bav-item active">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/blog/">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/about_me/">About Me</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Dropdown link
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="navbar-nav ms-auto">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal"><i
+                        class="fa-solid fa-right-to-bracket"></i>
+                    Log In
+                </button>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="logInModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="loginModalLabel">Log In</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <button type="button" class="btn btn-outline-dark w-100 btn-sm"><i
+                                class="fa-brands fa-google"></i>&nbsp; Log in with Google</button>
+                        <button type="button" class="btn btn-outline-dark w-100 btn-sm"><i
+                                class="fa-solid fa-envelope"></i>&nbsp; Log in with Email</button>
+                    </div>
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <button type="button" class="btn btn-outline-dark w-100 btn-sm"><i
+                            class="fa-brands fa-google"></i>&nbsp; Sign in with Google</button>
+                        <button type="button" class="btn btn-outline-dark w-100 btn-sm"><i
+                                class="fa-solid fa-envelope"></i>&nbsp; Sign Up with E-mail</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
