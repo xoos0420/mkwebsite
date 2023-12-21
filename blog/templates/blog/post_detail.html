@@ -10,9 +10,7 @@
     <title>{{ post.title }} - Blog</title>
     <!-- Core theme CSS (includes Bootstrap)-->
     <link rel="stylesheet" href="{% static 'blog/bootstrap/bootstrap.min.css' %}" media="screen">
-
-    <!-- Custom style for this template -->>
-    <!-- <link rel="stylesheet" href="{% static 'blog/css/blog-post.css' %}" media="screen"> -->
+    <script src="https://kit.fontawesome.com/7ec0f23614.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -54,15 +52,37 @@
                         <p>{{ post.created_at }}</p>
                         <hr>
 
+                        {% if post.file_upload %}
+                        <a href="{{ post.file_upload.url }}" class="btn btn-outline-secondary" role="button" download="">download:
+                            {% if post.get_file_ext == 'csv' %}
+                                <i class="fa-solid fa-file-csv"></i>
+                            {% elif post.get_file_ext == 'xlsx' or post.get_file_ext == 'xls' %}
+                                <i class="fa-solid fa-file-excel"></i>
+                            {% elif post.get_file_ext == 'docx' or post.get_file_ext == 'doc' %}
+                                <i class="fa-solid fa-file-word"></i>
+                            {% elif post.get_file_ext == 'pdf'%}
+                                <i class="fa-solid fa-file-pdf"></i>
+                            {% else %}
+                                <i class="fa-solid fa-file"></i>
+                            {% endif %}
+                            {{ post.get_file_name }}
+                        </a>
+                        {% endif %}
+                        <hr>
+
                     </header>
                     <!-- Preview image -->
-                    <img class="mb-4"><img class="img-fluid rounded"
-                            src="{{ post.head_image.url }}" alt="" />
-                            
+                    {% if post.head_image %}
+                        <img class="img-fluid rounded" src="{{ post.head_image.url }}" alt="{{ post.tile }} head_image">
+                    {% else %}
+                        <img class="img-fluid rounded" src="https://picsum.photos/seed/{{ post.id }}/900/400" alt="random_image">
+                    {% endif %}
+                    <hr>
+
                     <!-- Post content-->
-                    <section class="mb-5">
-                        <p class="fs-5 mb-4">{{ post.content }}</p>
-                    </section>
+                    <p>{{ post.content }}</p>
+                    <hr>
+
                 </article>
                 <!-- Comments section-->
                 <section class="mb-5">
