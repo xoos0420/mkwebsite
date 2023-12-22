@@ -6,25 +6,35 @@
 
         {% for p in post_list %}
         <!-- Blog post-->
-        <div class="card mb-4">
+        <div class="card mb-4" id="post-{{ p.pk }}">
             {% if p.head_image %}
                 <img class="card-img-top" src="{{ p.head_image.url }}" alt="{{ p }} head_image">
             {% else %}
                 <img class="card-img-top" src="https://picsum.photos/seed/{{ p.id }}/850/350" alt="random_image">
             {% endif %}
+
             <div class="card-body">
-                <div class="small text-muted">January 1, 2023</div>
+                {% if p.category %}
+                    <span class="badge bg-primary float-end">{{ p.category }}</span>
+                {% else %}
+                    <span class="badge bg-primary float-end">미분류</span>
+                {% endif %}
+
                 <h2 class="card-title h4">{{ p.title }}</h2>
+
                 {% if p.hook_text %}
                     <h5 class="text-muted">{{ p.hook_text }}</h5>
                 {% endif %}
+                
                 <p class="card-text">{{ p.content | truncatewords:45 }}</p>
                 <a class="btn btn-primary" href="{{ p.get_absolute_url }}">Read more →</a>
             </div>
+
             <div class="card-footer text-muted">
                 Posted On {{ p.created_at }} by
                 <a href="#">{{ p.author | upper }}</a>
             </div>
+
         </div>
         {% endfor %}
     {% else %}

@@ -3,3 +3,4 @@ db.sqlite3-journal
 blog/migrations/*
 single_pages/migrations/*
 _media/
+.env
