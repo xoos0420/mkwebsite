@@ -1,7 +1,7 @@
 {% extends 'blog/base.html' %}
 
 {% block main_area %}
-    <h1>Blog</h1>
+    <h1>Blog {% if category %}<span class="badge bg-secondary">{{ category }}</span>{% endif %}</h1>
     {% if post_list.exists %}
 
         {% for p in post_list %}
@@ -25,7 +25,7 @@
                 {% if p.hook_text %}
                     <h5 class="text-muted">{{ p.hook_text }}</h5>
                 {% endif %}
-                
+
                 <p class="card-text">{{ p.content | truncatewords:45 }}</p>
                 <a class="btn btn-primary" href="{{ p.get_absolute_url }}">Read more →</a>
             </div>
@@ -38,7 +38,7 @@
         </div>
         {% endfor %}
     {% else %}
-        <h3>아직 게시물이 없습니다.</h3>
+        <h3>아직 게시물이 없습니다</h3>
     {% endif %}
 
     <!-- Pagination-->
