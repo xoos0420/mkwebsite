@@ -7,6 +7,12 @@
 {% block main_area %}
 <div id="post-area">
     <!-- Post title-->
+    {% if post.category %}
+        <span class="badge bg-primary float-end">{{ post.category }}</span>
+    {% else %}
+        <span class="badge bg-primary float-end">미분류</span>
+    {% endif %}
+
     <h1 class="fw-bolder mb-1">{{ post.title }}</h1>
     <h5 class="text-muted">{{ post.hook_text }}</h5>
 
