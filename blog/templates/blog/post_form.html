@@ -1,14 +1,15 @@
 {% extends 'blog/base_full_width.html' %}
 
+{% load crispy_forms_tags %}
+
 {% block head_title %}created Post - Blog{% endblock %}
 
 {% block main_area %}
     <h1>Create New Post</h1>
     <hr>
     <form method="post" enctype="multipart/form-data">{% csrf_token %}
-        <table>
-            {{ form }}
-        </table>
+            {{ form | crispy }}
+            <br>
         <button type="submit" class="btn btn-primary float-end">submit</button>
     </form>
 {% endblock %}
