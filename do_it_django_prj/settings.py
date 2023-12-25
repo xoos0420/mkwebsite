@@ -156,3 +156,5 @@ SITE_ID = 1
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERYFICATION = 'none'
 LOGIN_REDIRECT_URL = '/blog/'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
