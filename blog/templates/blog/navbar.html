@@ -49,17 +49,15 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div class="d-grid gap-2 col-6 mx-auto">
+                    <div class="row row-cols-2 mx-auto gap-2">
                         <a role="button" class="btn btn-outline-dark w-100 btn-sm" href="{% provider_login_url 'google' %}"><i
                                 class="fa-brands fa-google"></i>&nbsp; Log in with Google</a>
-                        <button type="button" class="btn btn-outline-dark w-100 btn-sm"><i
-                                class="fa-solid fa-envelope"></i>&nbsp; Log in with Email</button>
-                    </div>
-                    <div class="d-grid gap-2 col-6 mx-auto">
-                        <button type="button" class="btn btn-outline-dark w-100 btn-sm"><i
-                            class="fa-brands fa-google"></i>&nbsp; Sign in with Google</button>
-                        <button type="button" class="btn btn-outline-dark w-100 btn-sm"><i
-                                class="fa-solid fa-envelope"></i>&nbsp; Sign Up with E-mail</button>
+                        <a role="button" class="btn btn-outline-dark w-100 btn-sm" href="/accounts/login/"><i
+                                class="fa-solid fa-envelope"></i>&nbsp;&nbsp; Log in with Username</a>
+                        <!-- <a role="button" class="btn btn-outline-dark w-100 btn-sm" href="/accounts/signup/"><i
+                            class="fa-brands fa-google"></i>&nbsp; Sign Up with Google</a> -->
+                        <a role="button" class="btn btn-outline-dark w-100 btn-sm" href="/accounts/signup/"><i
+                                class="fa-solid fa-envelope"></i>&nbsp;&nbsp; Sign Up with E-mail</a>
                     </div>
                 </div>
             </div>
