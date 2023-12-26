@@ -108,7 +108,32 @@
 
                         {% if user.is_authenticated and comment.author == user %}
                             <div class="ms-auto">
-                                <a role="button" class="btn btn-primary btn-sm" id="comment-{{ comment.pk }}-update-btn" href="/blog/update_comment/{{ comment.pk }}/">Edit</a>
+                                <a role="button" class="btn btn-primary btn-sm"
+                                id="comment-{{ comment.pk }}-update-btn" href="/blog/update_comment/{{ comment.pk }}/">Edit</a>
+                                <a role="button" class="btn btn-danger btn-sm"
+                                id="comment-{{ comment.pk }}-delete-modal-btn"
+                                href="#" data-bs-toggle="modal" data-bs-target="#deleteCommentModal-{{ comment.pk }}">Delete</a>
+                            </div>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="deleteCommentModal-{{ comment.pk }}" tabindex="-1" role="dialog" aria-labelledby="deleteCommentModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="deleteModalLabel">Are you Sure?</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <del>{{ comment | linebreaks }}</del>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal">Cancle</button>
+                                            <a role="button" class="btn btn-danger" href="/blog/delete_comment/{{ comment.pk}}/">Delete</a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         {% endif %}
                     </div>
