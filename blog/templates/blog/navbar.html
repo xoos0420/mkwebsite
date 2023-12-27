@@ -22,8 +22,16 @@
             <ul class="navbar-nav ms-auto">
                 {% if user.is_authenticated %}
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false">{{ user.username }}
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                        role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        {% if user.socialaccount_set.all.0.get_avatar_url %}
+                            <img class="rounded-circle" width="30px" src="{{ user.socialaccount_set.all.0.get_avatar_url }}" alt="">
+                        {% else %}
+                            <img class="rounded-circle" width="30px" src="https://ui-avatars.com/api/?name={{ user.username }}" alt="">
+                        {% endif %}
+                        &nbsp;
+                        {{ user.username }}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a href="/accounts/logout/" class="dropdown-item">Log Out</a>
