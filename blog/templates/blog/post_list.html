@@ -9,7 +9,14 @@
 {% endif %}
 {% endif %}
 
-<h1>Blog {% if category %}<span class="badge bg-secondary">{{ category }}</span>{% endif %}</h1>
+<h1>Blog
+    {% if search_info %}
+        <small class="text-muted">{{ search_info }}</small>
+    {% endif %}
+    {% if category %}
+        <span class="badge bg-secondary">{{ category }}</span>
+    {% endif %}
+</h1>
 {% if post_list.exists %}
 
 {% for p in post_list %}
