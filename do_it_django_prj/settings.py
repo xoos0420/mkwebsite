@@ -93,12 +93,12 @@ WSGI_APPLICATION = 'do_it_django_prj.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': config('DB_NAME'),
-        'USER': config('DB_USER'),
-        'PASSWORD': config('DB_PASSWORD'),
-        'HOST': config('DB_HOST'),
-        'PORT': config('DB_PORT'),
+        'ENGINE': os.environ.get("SQL_ENGINE", 'django.db.backends.sqlite3'),
+        'NAME': os.environ.get("SQL_DATABASE", os.path.join(BASE_DIR, 'db.sqlite3')),
+        'USER': os.environ.get("SQL_USER", 'user'),
+        'PASSWORD': os.environ.get("SQL_PASSWORD", 'password'),
+        'HOST': os.environ.get("SQL_HOST", 'localhost'),
+        'PORT': os.environ.get("SQL_PORT", 'port'),
     }
 }
 
