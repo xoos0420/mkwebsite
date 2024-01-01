@@ -1,3 +1,4 @@
 _media/
 .env
-.env.dev
+.env.prod
+.env.prod.db

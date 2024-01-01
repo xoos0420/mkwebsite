@@ -16,6 +16,7 @@ django-markdownx==4.0.7
 exceptiongroup==1.2.0
 executing==2.0.1
 extensions==0.4
+gunicorn==21.2.0
 idna==3.6
 ipython==8.18.1
 jedi==0.19.1
